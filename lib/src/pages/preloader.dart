@@ -23,7 +23,6 @@ class _PreloadPageState extends State<PreloadPage> {
     }
 
     Navigator.pushReplacementNamed(context, '/home');
-
   }
 
   @override
