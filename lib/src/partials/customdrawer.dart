@@ -60,9 +60,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
               }),
           ListTile(
               leading: Icon(Icons.public,color: Colors.black),
-              title: Text('Escolher Continente'),
+              title: Text('Continente'),
               onTap: () {
-                Navigator.pushReplacementNamed(widget.pageContext, '/continet');
+                Navigator.pushReplacementNamed(widget.pageContext, '/continent');
               }),
           ListTile(
               leading: Icon(Icons.search, color: Colors.black),

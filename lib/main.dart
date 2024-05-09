@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'src/models/appdata.dart';
 import 'src/pages/searchpage.dart';
+import 'src/pages/continent.dart';
 
 // pages
 import 'src/pages/preloader.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/preloader': (context) => PreloadPage(),
         '/home': (context) => HomePage(),
         '/search':(context) => SearchPage(),
+        '/continent': (context) => ContinentPage(),
       },
       initialRoute: '/preloader',
     );
