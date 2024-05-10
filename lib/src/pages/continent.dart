@@ -8,14 +8,14 @@ import '../partials/citybox.dart';
 class ContinentPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
-  TextStyle styles = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.bold,
-    fontFamily: 'Helvetica Neue',
-  );
-
-  void seeCityAction(int continentIndex) {
-    print(continentIndex);
+  void seeCityAction(context, continentIndex) {
+    Navigator.pushReplacementNamed(
+      context,
+      '/listcity',
+      arguments: {
+        'continentIndex': continentIndex,
+      },
+    );
   }
 
   void cityBoxAction(cityData) {
@@ -64,7 +64,7 @@ class ContinentPage extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        seeCityAction(index);
+                        seeCityAction(context, index);
                       },
                       child: Text('Ver cidades',
                           style: TextStyle(
@@ -77,14 +77,16 @@ class ContinentPage extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  height: 130,
+                  height: 150,
                   margin: EdgeInsets.only(bottom: 15),
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: cities.length,
                     itemBuilder: (cityContext, cityIndex) {
                       return CityBox(
-                          data: cities[cityIndex], onTap: cityBoxAction);
+                        data: cities[cityIndex],
+                        onTap: cityBoxAction,
+                      );
                     },
                   ),
                 )
