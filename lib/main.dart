@@ -4,6 +4,7 @@ import 'src/models/appdata.dart';
 import 'src/pages/searchpage.dart';
 import 'src/pages/continent.dart';
 import 'src/pages/listcity.dart';
+import 'src/pages/city.dart';
 
 // pages
 import 'src/pages/preloader.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/search':(context) => SearchPage(),
         '/continent': (context) => ContinentPage(),
         '/listcity': (context) => ListCityPage(),
+        '/city': (context) => CityPage(),
       },
       initialRoute: '/preloader',
     );

@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
         appBar: CustomAppBar(
           pageContext: context,
           scaffoldKey: _scaffoldKey,
-          title: 'Página HOME',
+          title: '',
           hideSearch: false,
           showDrawer: true,
         ),

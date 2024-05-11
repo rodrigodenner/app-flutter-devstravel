@@ -8,8 +8,14 @@ import '../partials/citybox.dart';
 class ListCityPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
-  void cityBoxAction(cityData) {
-    print(cityData['name']);
+  void cityBoxAction(pageContext, cityData) {
+    Navigator.pushNamed(
+      pageContext,
+      '/city',
+      arguments: {
+        'cityData': cityData,
+      },
+    );
   }
 
   @override
@@ -44,7 +50,9 @@ class ListCityPage extends StatelessWidget {
             children: List.generate(cities.length, (index) {
               return CityBox(
                 data: cities[index],
-                onTap: cityBoxAction,
+                onTap: (cityData){
+                  cityBoxAction(context, cityData);
+                },
               );
             }),
           ),

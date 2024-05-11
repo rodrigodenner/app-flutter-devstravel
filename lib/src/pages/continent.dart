@@ -9,7 +9,7 @@ class ContinentPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   void seeCityAction(context, continentIndex) {
-    Navigator.pushReplacementNamed(
+    Navigator.pushNamed(
       context,
       '/listcity',
       arguments: {
@@ -18,8 +18,14 @@ class ContinentPage extends StatelessWidget {
     );
   }
 
-  void cityBoxAction(cityData) {
-    print(cityData['name']);
+  void cityBoxAction(pageContext,cityData) {
+    Navigator.pushNamed(
+      pageContext,
+      '/city',
+      arguments: {
+        'cityData': cityData,
+      },
+    );
   }
 
   @override
@@ -85,7 +91,9 @@ class ContinentPage extends StatelessWidget {
                     itemBuilder: (cityContext, cityIndex) {
                       return CityBox(
                         data: cities[cityIndex],
-                        onTap: cityBoxAction,
+                        onTap: (cityData){
+                          cityBoxAction(context, cityData);
+                        },
                       );
                     },
                   ),
