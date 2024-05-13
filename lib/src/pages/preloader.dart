@@ -10,6 +10,7 @@ class PreloadPage extends StatefulWidget {
 
 class _PreloadPageState extends State<PreloadPage> {
   bool loading = true;
+  bool requestFailed = false; // Adicionado um novo estado para controlar se a solicitação falhou
 
   void requestInfo() async {
     await Future.delayed(const Duration(seconds: 1));
@@ -19,10 +20,11 @@ class _PreloadPageState extends State<PreloadPage> {
     if (!req) {
       setState(() {
         loading = false;
+        requestFailed = true; // Define requestFailed como true se a solicitação falhar
       });
+    } else {
+      Navigator.pushReplacementNamed(context, '/home');
     }
-
-    Navigator.pushReplacementNamed(context, '/home');
   }
 
   @override
@@ -45,32 +47,32 @@ class _PreloadPageState extends State<PreloadPage> {
             ),
             loading
                 ? Container(
-                    margin: const EdgeInsets.symmetric(vertical: 20),
-                    child: const CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-                    ),
-                  )
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              child: const CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+              ),
+            )
                 : Container(),
-            !loading
+            requestFailed // Verifica se a solicitação falhou
                 ? Container(
-                    margin: const EdgeInsets.all(30),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          loading =
-                              true; // Define loading como true para exibir o indicador de carregamento
-                        });
-                        requestInfo(); // Chama novamente o método requestInfo() para fazer uma nova solicitação
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue, // Cor de fundo
-                      ),
-                      child: const Text(
-                        'Tente Novamente',
-                        style: TextStyle(color: Colors.white), // Cor do texto
-                      ),
-                    ),
-                  )
+              margin: const EdgeInsets.all(30),
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    loading = true; // Define loading como true para exibir o indicador de carregamento
+                    requestFailed = false; // Define requestFailed como false para esconder a mensagem de falha
+                  });
+                  requestInfo(); // Chama novamente o método requestInfo() para fazer uma nova solicitação
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, // Cor de fundo
+                ),
+                child: const Text(
+                  'Tente Novamente',
+                  style: TextStyle(color: Colors.white), // Cor do texto
+                ),
+              ),
+            )
                 : Container(),
           ],
         ),
@@ -78,3 +80,4 @@ class _PreloadPageState extends State<PreloadPage> {
     );
   }
 }
+

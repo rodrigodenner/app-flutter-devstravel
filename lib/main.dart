@@ -5,6 +5,7 @@ import 'src/pages/searchpage.dart';
 import 'src/pages/continent.dart';
 import 'src/pages/listcity.dart';
 import 'src/pages/city.dart';
+import 'src/pages/favorites.dart';
 
 // pages
 import 'src/pages/preloader.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/continent': (context) => ContinentPage(),
         '/listcity': (context) => ListCityPage(),
         '/city': (context) => CityPage(),
+        '/saved': (context) => FavoritesPage(),
       },
       initialRoute: '/preloader',
     );

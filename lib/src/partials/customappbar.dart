@@ -70,7 +70,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         widget.title,
         style: const TextStyle(
             color: Colors.black,
-            fontSize: 15,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
             fontFamily: 'Helvetica Neue'),
       ),
